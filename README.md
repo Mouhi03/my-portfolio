@@ -1,114 +1,70 @@
 # Mouhieddine Bouktib — Portfolio
 
-A personal portfolio site built with **React + Vite**.
+Personal portfolio of **Mouhieddine Bouktib**, AI & Data Science engineering student at EMSI Rabat. It presents his education, internships, skills, projects and certificates in a single responsive page.
 
-## 1. Edit your content
+The site content is written in French.
 
-Almost everything you'll want to change lives at the top of `src/App.jsx`, in a
-few plain objects/arrays marked `// EDIT ME`:
+## Sections
 
-- `profile` — your name, role, email, GitHub, LinkedIn, resume link
-- `about` — your bio paragraphs
-- `skills` — your skill groups
-- `projects` — your project cards (title, description, tags, links)
+- **À propos**: short bio and key facts
+- **Formation**: education timeline
+- **Expérience**: internships, each with the company logo
+- **Compétences**: skills grouped by domain
+- **Projets**: projects built during studies and internships
+- **Certificats**: online certificates with a preview image and a verification link
+- **Langues** and **Centres d'intérêt**
+- **Contact**: email, phone, GitHub and LinkedIn
 
-Colors, fonts, and spacing live in `src/index.css` (design tokens at the top)
-and `src/App.css` (layout).
+## Features
 
-## 2. Run it locally
+- Responsive layout for desktop, tablet and phone
+- Sticky navigation that highlights the section being viewed
+- Animated particle background that reacts to the mouse
+- Scroll-driven timelines for education and experience
+- Stats bar computed from the data (internships, projects, certificates, technologies, languages), so the numbers update when content is added
+- Respects the "reduce motion" accessibility setting
 
-You need [Node.js](https://nodejs.org/) 18 or newer installed.
+## Tech stack
+
+- [React](https://react.dev/)
+- [Vite](https://vite.dev/)
+- Plain CSS, no UI framework
+
+## Run locally
+
+Requires [Node.js](https://nodejs.org/) 18 or newer.
 
 ```bash
-# 1. Install dependencies (only needed once, or after changing dependencies)
 npm install
-
-# 2. Start the local dev server
 npm run dev
 ```
 
-This opens the site at **http://localhost:5173** with hot-reload: edit a file,
-save, and the browser updates instantly.
+The site opens at http://localhost:5173.
 
-> Note: if `npm install` was ever run on a different machine/OS, delete the
-> `node_modules` folder and `package-lock.json`, then run `npm install` again
-> on your own machine so the right binaries get installed for your platform.
-
-To build an optimized production version (output goes to `dist/`):
+To create a production build:
 
 ```bash
 npm run build
-npm run preview   # preview the production build locally
+npm run preview
 ```
-
-## 3. Deploy it for free
-
-The easiest free option is **Vercel**, since it auto-builds and auto-deploys
-straight from GitHub with zero configuration for a Vite app. **GitHub Pages**
-is a solid free alternative if you'd rather keep everything inside GitHub.
-
-### Option A — Vercel (recommended)
-
-1. Push this project to a GitHub repository (see step 4 below if you haven't yet).
-2. Go to [vercel.com](https://vercel.com) and sign up/log in with your GitHub
-   account.
-3. Click **Add New → Project**, select your portfolio repo, and click **Deploy**.
-   Vercel auto-detects Vite — no settings to change.
-4. After ~1 minute you'll get a live URL like `your-portfolio.vercel.app`.
-5. Every time you `git push` to `main`, Vercel automatically redeploys.
-6. Optional: add a custom domain for free under Project → Settings → Domains.
-
-### Option B — GitHub Pages
-
-1. Install the deploy helper:
-   ```bash
-   npm install --save-dev gh-pages
-   ```
-2. In `package.json`, add your GitHub Pages URL as `"homepage"` and add a
-   `deploy` script:
-   ```json
-   "homepage": "https://<your-username>.github.io/<repo-name>",
-   "scripts": {
-     "predeploy": "npm run build",
-     "deploy": "gh-pages -d dist"
-   }
-   ```
-3. In `vite.config.js`, set `base` to your repo name so assets resolve
-   correctly:
-   ```js
-   export default defineConfig({
-     plugins: [react()],
-     base: '/<repo-name>/',
-   })
-   ```
-4. Run:
-   ```bash
-   npm run deploy
-   ```
-5. In your GitHub repo, go to **Settings → Pages** and confirm the source is
-   set to the `gh-pages` branch. Your site will be live at the `homepage` URL
-   above within a minute or two.
-
-## 4. Push this project to GitHub (if you haven't yet)
-
-```bash
-git init
-git add .
-git commit -m "Initial portfolio"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git push -u origin main
-```
-
-Then follow Option A or B above to deploy.
 
 ## Project structure
 
 ```
+public/
+  certificates/   Certificate images
+  logos/          Company logos for the experience section
+  photo.jpg       Profile photo
 src/
-  App.jsx        Page content and layout (edit here)
-  App.css        Section/layout styles
-  index.css      Design tokens (colors, fonts) + base styles
-  main.jsx       React entry point
-index.html       Page title, meta tags, fonts
+  App.jsx         Page content (data) and components
+  App.css         Layout and component styles
+  index.css       Colors, fonts and base styles
+  main.jsx        React entry point
+index.html        Page title and meta tags
 ```
+
+## Contact
+
+- Email: mouhieboukttib19@gmail.com
+- GitHub: [github.com/Mouhi03](https://github.com/Mouhi03)
+- LinkedIn: [linkedin.com/in/Mouhieddine-Bouktib](https://linkedin.com/in/Mouhieddine-Bouktib)
