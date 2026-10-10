@@ -1,17 +1,28 @@
 :root{
-  --bg:#f5f7fb;--surface:#fff;--line:#e2e8f0;--text:#475467;--heading:#0b1220;--dim:#667085;
-  --accent:#2457d6;--accent-dark:#1b44ad;--accent-soft:#eaf0ff;--teal:#0d9488;
-  --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:var(--sans);--serif:var(--sans);
-  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
-  font:16px/1.65 var(--sans);color:var(--text);background:var(--bg);color-scheme:light;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility
+  --bg:#07080c;--bg2:#0d0f15;--card:rgba(255,255,255,.035);--line:rgba(255,255,255,.09);
+  --ink:#f3efe6;--text:#b4b6c0;--dim:#7c8090;
+  --saffron:#ffb21e;--mint:#38e8b8;--rose:#ff6b81;
+  --display:'Bricolage Grotesque','Inter',system-ui,sans-serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --pad:clamp(20px,5vw,64px);
+  font:16px/1.7 var(--sans);color:var(--text);background:var(--bg);color-scheme:dark;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  -webkit-tap-highlight-color:transparent;
 }
 *{box-sizing:border-box}
-body{margin:0}
-::selection{background:var(--accent-soft);color:var(--heading)}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+body{margin:0;overflow-x:clip;background:var(--bg)}
+::selection{background:var(--saffron);color:#111}
 a{color:inherit}
-h1,h2,h3{font-family:var(--sans);color:var(--heading);margin:0;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;letter-spacing:-.03em;font-weight:700}
 p{margin:0}
-button{font:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit;color:inherit}
+img{max-width:100%}
+:focus-visible{outline:2px solid var(--saffron);outline-offset:3px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
