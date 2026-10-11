@@ -2,8 +2,6 @@
 
 Personal portfolio of **Mouhieddine Bouktib**, AI & Data Science engineering student at EMSI Rabat. It presents his education, internships, skills, projects and certificates in a single responsive page.
 
-The site content is written in French.
-
 ## Sections
 
 - **À propos**: short bio and key facts
