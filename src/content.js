@@ -213,7 +213,7 @@ const en = {
     { title: 'Programming languages', items: ['Python', 'Java', 'C++', 'PHP', 'JavaScript', 'TypeScript'] },
     { title: 'AI & Data Science', items: ['Machine Learning', 'Deep Learning', 'Data visualisation (PowerBI)'] },
     { title: 'Web development', items: ['HTML5', 'CSS3', 'Bootstrap', 'React.js', 'Laravel', 'Django'] },
-    { title: 'Databases', items: ['MySQL', 'MongoDB'] },
+    { title: 'Databases', items: ['MySQL', 'MongoDB','Neo4j','Cassandra'] },
     { title: 'Tools & DevOps', items: ['Git', 'GitHub', 'GitLab', 'Docker', 'Jira', 'Scrum', 'Agile methods'] },
     { title: 'Office software', items: ['Microsoft Word', 'Excel', 'PowerPoint'] },
   ],
