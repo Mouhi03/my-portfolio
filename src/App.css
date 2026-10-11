@@ -80,6 +80,28 @@ main{position:relative;z-index:1}
 .nav-open .nav-toggle span:first-child{top:21.5px;transform:rotate(45deg)}
 .nav-open .nav-toggle span:last-child{top:21.5px;transform:rotate(-45deg)}
 
+/* ---------- Nav tools: language switch + CV ---------- */
+.nav-tools{display:flex;align-items:center;gap:8px;flex:none}
+.lang-switch{display:inline-flex;align-items:center;gap:2px;padding:4px;height:40px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);cursor:pointer;font:600 12px/1 var(--mono);letter-spacing:.06em;transition:border-color .25s}
+.lang-switch:hover{border-color:var(--saffron)}
+.lang-switch span{display:grid;place-items:center;min-width:32px;height:30px;padding:0 6px;border-radius:999px;color:var(--dim);transition:background .3s var(--ease),color .3s}
+.lang-switch span.on{background:var(--saffron);color:#111}
+.nav-cv{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 15px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);text-decoration:none;font:600 13px/1 var(--sans);transition:background .25s,color .25s,border-color .25s}
+.nav-cv:hover{border-color:var(--mint);color:var(--mint)}
+.btn-cv svg{flex:none}
+.btn-cv:hover svg{animation:nudge .6s var(--ease)}
+@keyframes nudge{40%{transform:translateY(4px)}}
+
+/* ---------- Soft skills ---------- */
+.soft-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.soft-card{padding:clamp(20px,2.2vw,26px);display:flex;flex-direction:column;gap:10px}
+.soft-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;font-size:22px;line-height:1;color:var(--saffron);background:rgba(255,178,30,.1);border:1px solid rgba(255,178,30,.25);transition:transform .5s var(--ease),background .3s,color .3s}
+.soft-card:nth-child(even) .soft-icon{color:var(--mint);background:rgba(56,232,184,.1);border-color:rgba(56,232,184,.25)}
+.soft-card:hover .soft-icon{transform:rotate(90deg) scale(1.08);background:var(--saffron);color:#111}
+.soft-card:nth-child(even):hover .soft-icon{background:var(--mint)}
+.soft-card h3{font-size:clamp(17px,1.7vw,20px);line-height:1.2;margin-top:6px}
+.soft-card p{font-size:14.5px;line-height:1.6}
+
 /* ---------- Hero ---------- */
 .hero{position:relative;z-index:1;min-height:100vh;min-height:100svh;max-width:1160px;margin:0 auto;padding:clamp(110px,16vh,150px) var(--pad) clamp(40px,8vh,80px);display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:center}
 .hero-copy{min-width:0;container-type:inline-size}
@@ -268,8 +290,15 @@ main{position:relative;z-index:1}
 /* =====================================================================
    RESPONSIVE
    ===================================================================== */
-@media(max-width:980px){
+@media(max-width:1180px){
+  .nav-cv span{display:none}
+  .nav-cv{width:40px;padding:0;justify-content:center}
   .nav-links a{padding:9px 10px;font-size:13px}
+}
+
+@media(max-width:980px){
+  .nav-links a{padding:9px 8px;font-size:12.5px}
+  .soft-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hero{grid-template-columns:minmax(0,1fr) minmax(0,.7fr)}
   .skills-grid,.certs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -279,6 +308,8 @@ main{position:relative;z-index:1}
   .nav{top:10px;width:calc(100% - 20px);padding:6px 8px 6px 18px}
   .nav::before{background:rgba(13,15,21,.72);border-color:var(--line);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
   .nav-toggle{display:block}
+  .nav-tools{margin-left:auto;margin-right:6px}
+  .nav-cv{display:none}
   .nav-links{position:fixed;inset:0;z-index:-1;flex-direction:column;justify-content:center;gap:2px;padding:90px 28px 40px;background:rgba(7,8,12,.995);clip-path:circle(0 at calc(100% - 38px) 38px);transition:clip-path .7s var(--ease);visibility:hidden}
   .nav-open .nav-links{clip-path:circle(150% at calc(100% - 38px) 38px);visibility:visible}
   .nav-links li{opacity:0;transform:translateY(24px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
@@ -327,7 +358,7 @@ main{position:relative;z-index:1}
 
 @media(max-width:560px){
   body{font-size:15.5px}
-  .skills-grid{grid-template-columns:minmax(0,1fr)}
+  .skills-grid,.soft-grid{grid-template-columns:minmax(0,1fr)}
   .btn{flex:1 1 100%;min-height:54px}
   .hero-actions{gap:10px}
   .company-logo{width:46px;height:46px;border-radius:12px}
