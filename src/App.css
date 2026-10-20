@@ -375,3 +375,55 @@ main{position:relative;z-index:1}
   .project::after{transform:scaleY(1);opacity:.7}
   .project-num{color:rgba(255,178,30,.15)}
 }
+
+/* ==========================================================================
+   Extra motion + touch polish
+   All of it is transform/opacity based and is switched off by the global
+   prefers-reduced-motion rule in index.css.
+   ========================================================================== */
+
+/* Section titles: a short accent line draws itself under the heading */
+.section-head::after{content:'';display:block;height:3px;width:clamp(56px,9vw,96px);margin-top:22px;border-radius:3px;background:linear-gradient(90deg,var(--saffron),var(--mint));transform:scaleX(0);transform-origin:0 50%;transition:transform .9s var(--ease) .35s}
+.section-head.reveal-visible::after{transform:scaleX(1)}
+
+/* Skill chips pop in one after another when their card appears */
+@keyframes chip-in{from{opacity:0;transform:translateY(10px) scale(.9)}}
+.reveal-visible .skill-list li{animation:chip-in .5s var(--ease) calc(var(--n,0) * 55ms + 300ms) backwards}
+
+/* The ongoing role gets a soft pulsing ring on the timeline */
+@keyframes ring{from{transform:scale(.6);opacity:.9}to{transform:scale(1.9);opacity:0}}
+.tl-current.tl-reached .tl-marker::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--saffron);animation:ring 2.2s var(--ease) infinite}
+
+/* Certificates: a light sweep crosses the image on hover */
+.cert-image{position:relative}
+.cert-image::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.22) 50%,transparent 65%);transform:translateX(-120%);transition:transform .9s var(--ease)}
+.cert-card:hover .cert-image::after{transform:translateX(120%)}
+
+/* Interests drift gently (uses `translate` so hover transforms still work) */
+@keyframes drift-soft{50%{translate:0 -5px}}
+.interest-tag{animation:drift-soft 4.5s ease-in-out calc(var(--i,0) * -.9s) infinite}
+.interest-tag:hover{animation-play-state:paused}
+
+/* The full stop after "Parlons-en." bounces like a ball */
+@keyframes dot-bounce{0%,55%,100%{translate:0 0}20%{translate:0 -.2em}70%{translate:0 -.07em}}
+.contact-inner .dot{display:inline-block;animation:dot-bounce 2.6s var(--ease) infinite}
+
+/* Back-to-top button with scroll-progress ring */
+.fab{position:fixed;z-index:100;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,calc(env(safe-area-inset-bottom,0px) + 10px));width:52px;height:52px;display:grid;place-items:center;border-radius:50%;color:var(--ink);background:rgba(13,15,21,.78);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.45);opacity:0;transform:translateY(24px) scale(.8);pointer-events:none;transition:opacity .4s var(--ease),transform .5s var(--ease),color .25s}
+.fab-show{opacity:1;transform:none;pointer-events:auto}
+.fab:hover{color:var(--saffron)}
+.fab:active{transform:scale(.92)}
+.fab-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none}
+.fab-ring circle{fill:none;stroke:var(--saffron);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--scroll,0))}
+
+/* Touch: press feedback and comfortable tap targets */
+@media(hover:none){
+  .btn:active,.spot:active,.interest-tag:active,.nav-cv:active{transform:scale(.97)}
+  .project-links a{padding:10px 0}
+  .to-top{padding:14px 0}
+  .cert-card:hover .cert-image::after{transform:translateX(-120%)}
+}
+@media(max-width:560px){
+  .fab{width:48px;height:48px}
+  .interest-tag{padding:12px 18px}
+}

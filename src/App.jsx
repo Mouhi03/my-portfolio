@@ -397,6 +397,24 @@ function Nav() {
   )
 }
 
+/** Floating back-to-top button; its ring fills as you scroll (reads --scroll). */
+function ScrollTop() {
+  const { t } = useLang()
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    const on = () => setShow(window.scrollY > 700)
+    on()
+    window.addEventListener('scroll', on, { passive: true })
+    return () => window.removeEventListener('scroll', on)
+  }, [])
+  return (
+    <a href="#top" className={`fab${show ? ' fab-show' : ''}`} aria-label={t.ui.backTop} tabIndex={show ? 0 : -1}>
+      <svg className="fab-ring" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" pathLength="1" /></svg>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 19V5m0 0l-6 6m6-6l6 6" /></svg>
+    </a>
+  )
+}
+
 function Marquee({ items, reverse = false }) {
   const row = items.map((t) => (
     <span key={t} className="mq-item"><i aria-hidden="true">✦</i>{t}</span>
@@ -458,7 +476,7 @@ function TimelineItem({ item, index }) {
 
   const current = t.ui.presentRe.test(item.period)
   return (
-    <div ref={ref} className={`tl-item${reached ? ' tl-reached' : ''}`} style={{ '--i': index }}>
+    <div ref={ref} className={`tl-item${reached ? ' tl-reached' : ''}${current ? ' tl-current' : ''}`} style={{ '--i': index }}>
       <div className="tl-period">
         {item.period}
         {current && <em>{t.ui.current}</em>}
@@ -590,6 +608,7 @@ function Page() {
 
       <Backdrop />
       <Interactions />
+      <ScrollTop />
       <Nav />
 
       <main id="top">
@@ -673,7 +692,7 @@ function Page() {
                 <Reveal as="div" className="skill-group spot" key={group.title} delay={i * 80}>
                   <h3><i>{String(i + 1).padStart(2, '0')}</i>{group.title}</h3>
                   <ul className="skill-list">
-                    {group.items.map((item) => <li key={item}>{item}</li>)}
+                    {group.items.map((item, k) => <li key={item} style={{ '--n': k }}>{item}</li>)}
                   </ul>
                 </Reveal>
               ))}
@@ -758,7 +777,7 @@ function Page() {
           <section className="section" id="interests">
             <SectionHead n="09" title={sec.interests.title} sub={sec.interests.sub} />
             <Reveal as="div" className="interests-list">
-              {t.interests.map((interest) => <span key={interest} className="interest-tag hot">{interest}</span>)}
+              {t.interests.map((interest, i) => <span key={interest} className="interest-tag hot" style={{ '--i': i }}>{interest}</span>)}
             </Reveal>
           </section>
 
